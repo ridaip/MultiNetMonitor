@@ -17,24 +17,48 @@
 
 ---
 
-## 🛠️ Installation & Setup
+## 📦 Standalone Windows Release (No Python Required)
+
+End-users on Windows do **NOT** need to install Python or any dependencies!
+
+1. Download **`MultiNetMonitor-Windows-x64.zip`** from the [GitHub Releases](https://github.com/ridaip/MultiNetMonitor/releases) page.
+2. Extract the `.zip` package.
+3. Double-click **`MultiNetMonitor.exe`** to launch instantly.
+
+---
+
+## 🛠️ Building Standalone Windows Executable Locally
+
+To bundle Python runtime and all libraries into a standalone Windows package:
+
+```bash
+pip install -r requirements.txt
+pip install pyinstaller
+python build_exe.py
+```
+
+The output standalone folder will be generated in `dist/MultiNetMonitor/`.
+
+---
+
+## 💻 Developer Installation & Setup
 
 ### Prerequisites
 
 - **Python**: `Python 3.10+`
-- **System Permissions**: ICMP ping requires network access permissions on Linux/Windows.
+- **System Permissions**: ICMP ping requires network access permissions.
 
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/MultiNetMonitor.git
+git clone https://github.com/ridaip/MultiNetMonitor.git
 cd MultiNetMonitor
 ```
 
 ### 2. Create Virtual Environment & Install Dependencies
 
 ```bash
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
@@ -52,9 +76,11 @@ python main.py
 ```
 MultiNetMonitor/
 ├── main.py                   # Application Entry Point
+├── build_exe.py              # Windows PyInstaller Build Script
 ├── requirements.txt          # Python Dependencies
 ├── .gitignore                # Git Ignore Rules
 ├── targets.json.example      # Example Configuration Template
+├── .github/workflows/        # Automated GitHub Actions Windows Release Builder
 ├── multinetmonitor/
 │   ├── core/                 # Core Alerters & Utilities
 │   ├── database/             # SQLite DB Queue Writer
