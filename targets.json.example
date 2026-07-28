@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Local Host",
+        "ip": "127.0.0.1",
+        "snmp_enabled": false,
+        "snmp_community": "public",
+        "snmp_version": 2,
+        "snmp_port": 161,
+        "custom_oids": []
+    }
+]

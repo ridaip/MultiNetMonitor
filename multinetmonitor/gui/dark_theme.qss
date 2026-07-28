@@ -1,0 +1,103 @@
+QWidget {
+    background-color: #0f172a; /* bg-slate-900 */
+    color: #e2e8f0; /* text-slate-200 */
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 13px;
+}
+QPushButton {
+    background-color: #1e293b; /* bg-slate-800 */
+    border: 1px solid #334155; /* border-slate-700 */
+    border-radius: 6px; /* rounded-md */
+    padding: 6px 12px;
+    color: #f8fafc; /* text-slate-50 */
+}
+QPushButton:hover {
+    background-color: #334155; /* bg-slate-700 */
+    border: 1px solid #06b6d4; /* border-cyan-500 */
+    color: #22d3ee; /* text-cyan-400 */
+}
+QPushButton:pressed {
+    background-color: #06b6d4; /* bg-cyan-500 */
+    color: #0f172a; /* text-slate-900 */
+}
+QLineEdit, QComboBox, QTableWidget {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 6px;
+    color: #f8fafc;
+}
+QLineEdit:focus, QComboBox:focus, QTableWidget:focus {
+    border: 1px solid #06b6d4;
+    outline: none;
+}
+QGroupBox {
+    border: 1px solid #334155;
+    border-radius: 8px; /* rounded-lg */
+    margin-top: 12px;
+    padding-top: 16px;
+    font-weight: bold;
+    background-color: #1e293b; /* Add background to groupbox for card effect */
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 8px;
+    color: #22d3ee;
+}
+QHeaderView::section {
+    background-color: #1e293b;
+    color: #22d3ee;
+    border: none;
+    border-right: 1px solid #334155;
+    padding: 6px;
+}
+QProgressBar {
+    border: 1px solid #334155;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+QProgressBar::chunk {
+    background-color: #06b6d4;
+    border-radius: 5px;
+}
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid #334155;
+    background: #1e293b;
+}
+QCheckBox::indicator:checked {
+    background: #06b6d4;
+    border-color: #06b6d4;
+}
+#TargetRow {
+    background-color: #1e293b;
+    border-radius: 6px;
+    margin-bottom: 4px;
+}
+#OpenScannerBtn {
+    color: #22d3ee;
+    border-color: #06b6d4;
+}
+QTabWidget::pane {
+    border: 1px solid #334155;
+    border-radius: 6px;
+}
+QTabBar::tab {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 8px 16px;
+    margin-right: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: #94a3b8; /* text-slate-400 */
+}
+QTabBar::tab:selected {
+    background: #0f172a;
+    border-bottom-color: #0f172a;
+    color: #22d3ee;
+}
