@@ -1,5 +1,7 @@
 import asyncio
 import ipaddress
+import platform
+import subprocess
 from PySide6.QtCore import QThread, Signal
 from pysnmp.hlapi.v3arch.asyncio import *
 
@@ -44,11 +46,19 @@ class SubnetScannerWorker(QThread):
         self.scan_finished.emit()
 
     async def scan_host(self, ip):
-        # 1. Fast ICMP Ping (Linux)
+        # 1. Fast ICMP Ping
+        extra_kwargs = {}
+        if platform.system().lower() == "windows":
+            ping_cmd = ['ping', '-n', '1', '-w', '1000', ip]
+            extra_kwargs['creationflags'] = subprocess.CREATE_NO_WINDOW
+        else:
+            ping_cmd = ['ping', '-c', '1', '-W', '1', ip]
+
         process = await asyncio.create_subprocess_exec(
-            'ping', '-c', '1', '-W', '1', ip,
+            *ping_cmd,
             stdout=asyncio.subprocess.DEVNULL,
-            stderr=asyncio.subprocess.DEVNULL
+            stderr=asyncio.subprocess.DEVNULL,
+            **extra_kwargs
         )
         await process.communicate()
         
