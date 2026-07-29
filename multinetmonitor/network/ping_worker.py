@@ -30,9 +30,11 @@ class PingWorker(QThread):
 
     def _ping(self):
         try:
-            # -c 1 for Linux/macOS, -n 1 for Windows, timeout 1s
+            # Use shell=False for security, capture output
+            extra_kwargs = {}
             if self.os_type == "windows":
                 command = ["ping", "-n", "1", "-w", "1000", self.target_ip]
+                extra_kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
             else:
                 # macOS doesn't support -W the same way, but most Linux do
                 if self.os_type == "darwin":
@@ -40,13 +42,13 @@ class PingWorker(QThread):
                 else:
                     command = ["ping", "-c", "1", "-W", "1", self.target_ip]
 
-            # Use shell=False for security, capture output
             result = subprocess.run(
                 command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True,
-                timeout=2.0
+                timeout=2.0,
+                **extra_kwargs
             )
 
             output = result.stdout
