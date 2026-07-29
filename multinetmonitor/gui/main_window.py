@@ -36,10 +36,8 @@ class MainWindow(QMainWindow):
         self.tray_icon.setIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_ComputerIcon))
         self.tray_icon.show()
         
-        from ..core.alerter import Alerter
-        Alerter().tray_icon = self.tray_icon
-        
-        self.targets_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'targets.json')
+        from ..utils.config import get_app_dir
+        self.targets_file = os.path.join(get_app_dir(), 'targets.json')
         self.target_configs = []
         self.target_windows = []
         
