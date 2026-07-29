@@ -16,7 +16,8 @@ class DBManager:
             return cls._instance
 
     def _init_db(self):
-        self.db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'monitor.db')
+        from ..utils.config import get_app_dir
+        self.db_path = os.path.join(get_app_dir(), 'monitor.db')
         self.write_queue = queue.Queue()
         self.running = True
         
