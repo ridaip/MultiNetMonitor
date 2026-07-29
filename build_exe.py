@@ -24,7 +24,7 @@ def build():
     ]
     print("Running command:", " ".join(cmd))
     subprocess.run(cmd, check=True)
-    print("\n✅ Build complete! Standalone package created at: dist/MultiNetMonitor/")
+    print("\n[SUCCESS] Build complete! Standalone package created at: dist/MultiNetMonitor/")
 
 if __name__ == "__main__":
     build()
