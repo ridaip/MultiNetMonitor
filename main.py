@@ -6,8 +6,9 @@ from multinetmonitor.gui.main_window import MainWindow
 from multinetmonitor.gui.theme import load_theme
 
 def main():
-    # Force X11/XWayland to allow absolute window positioning on Wayland desktops
-    os.environ["QT_QPA_PLATFORM"] = "xcb"
+    # Force X11/XWayland to allow absolute window positioning on Linux Wayland desktops
+    if sys.platform.startswith("linux"):
+        os.environ["QT_QPA_PLATFORM"] = "xcb"
     
     # Handle Ctrl+C gracefully
     signal.signal(signal.SIGINT, signal.SIG_DFL)
